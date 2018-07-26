@@ -38,10 +38,14 @@ export class FavoritesPage {
         modal.present();
         modal.onDidDismiss(remove => {
             if(remove) {
-                this.qService.removeFQ(quote);
+                this.removeFromFav(quote);
                 this.fetchQ();
             }
         });
     }
 
+    removeFromFav(quote: Quote) {
+        this.qService.removeFQ(quote);
+        this.fetchQ();
+    }
 }
