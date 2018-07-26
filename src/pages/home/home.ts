@@ -9,6 +9,8 @@ import {ShopPage} from "../shop/shop";
 })
 export class HomePage {
 
+    usersPage = UsersPage;
+
     constructor(public navCtrl: NavController) {
 
     }
