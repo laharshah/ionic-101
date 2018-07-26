@@ -1,13 +1,13 @@
 import { NgModule } from '@angular/core';
 import { IonicPageModule } from 'ionic-angular';
-import { BuyoutPage } from './buyout';
+import { QuotePage } from './quote';
 
 @NgModule({
   declarations: [
-    BuyoutPage,
+    QuotePage,
   ],
   imports: [
-    IonicPageModule.forChild(BuyoutPage),
+    IonicPageModule.forChild(QuotePage),
   ],
 })
-export class BuyoutPageModule {}
+export class QuotePageModule {}
