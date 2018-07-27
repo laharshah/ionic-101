@@ -7,13 +7,19 @@
 <ion-header>
 
   <ion-navbar>
-    <ion-title>Favorites Quotes</ion-title>
+      <button ion-button icon-only menuToggle>
+          <ion-icon name="menu"></ion-icon>
+      </button>
+
+      <ion-title>
+          Favorites Quotes
+      </ion-title>
   </ion-navbar>
 
 </ion-header>
 
 
-<ion-content padding>
+<ion-content [ngClass]="{'alt-bg': isAltBg()}" padding>
     <ion-list>
         <ion-item-sliding *ngFor="let q of quotes">
             <ion-item (click)="openQ(q)">

@@ -3,6 +3,7 @@ import {IonicPage, ModalController, NavController, NavParams} from 'ionic-angula
 import {Quote} from "../../data/quote.interface";
 import {QuotesService} from "../services/quotes";
 import {QuotePage} from "../quote/quote";
+import {SettingsService} from "../services/settings";
 
 /**
  * Generated class for the FavoritesPage page.
@@ -22,7 +23,8 @@ export class FavoritesPage {
 
     constructor(public navCtrl: NavController, public navParams: NavParams,
                 private qService: QuotesService,
-                private modalCtrl: ModalController) {
+                private modalCtrl: ModalController,
+                private settingsService: SettingsService) {
     }
 
     ionViewWillEnter() {
@@ -31,6 +33,10 @@ export class FavoritesPage {
 
     fetchQ() {
         this.quotes = this.qService.getFQ();
+    }
+
+    isAltBg() {
+        return this.settingsService.isAlt();
     }
 
     openQ(quote: Quote) {
