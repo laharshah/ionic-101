@@ -13,7 +13,10 @@ import {SettingsPage} from "../pages/settings/settings";
 import {TabsPage} from "../pages/tabs/tabs";
 import {QuotesService} from "../pages/services/quotes";
 import {SettingsService} from "../pages/services/settings";
-import {LoginPage} from "../pages/login/login";
+import {OAuthModule} from "angular-oauth2-oidc";
+import {LoginPageModule} from "../pages/login/login.module";
+import {HttpClientModule} from "@angular/common/http";
+import {BeerService} from "../pages/services/beer";
 
 @NgModule({
     declarations: [
@@ -23,11 +26,13 @@ import {LoginPage} from "../pages/login/login";
         QuotesPage,
         QuotePage,
         SettingsPage,
-        TabsPage,
-        LoginPage
+        TabsPage
     ],
     imports: [
         BrowserModule,
+        HttpClientModule,
+        LoginPageModule,
+        OAuthModule.forRoot(),
         IonicModule.forRoot(MyApp)
     ],
     bootstrap: [IonicApp],
@@ -38,15 +43,15 @@ import {LoginPage} from "../pages/login/login";
         QuotesPage,
         QuotePage,
         SettingsPage,
-        TabsPage,
-        LoginPage
+        TabsPage
     ],
     providers: [
         StatusBar,
         SplashScreen,
         {provide: ErrorHandler, useClass: IonicErrorHandler},
         QuotesService,
-        SettingsService
+        SettingsService,
+        BeerService
     ]
 })
 export class AppModule {
