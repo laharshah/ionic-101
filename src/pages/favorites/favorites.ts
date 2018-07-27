@@ -4,6 +4,7 @@ import {Quote} from "../../data/quote.interface";
 import {QuotesService} from "../services/quotes";
 import {QuotePage} from "../quote/quote";
 import {SettingsService} from "../services/settings";
+import {OAuthService} from 'angular-oauth2-oidc';
 
 /**
  * Generated class for the FavoritesPage page.
@@ -24,7 +25,8 @@ export class FavoritesPage {
     constructor(public navCtrl: NavController, public navParams: NavParams,
                 private qService: QuotesService,
                 private modalCtrl: ModalController,
-                private settingsService: SettingsService) {
+                private settingsService: SettingsService,
+                private oauthService: OAuthService) {
     }
 
     ionViewWillEnter() {
@@ -48,10 +50,29 @@ export class FavoritesPage {
                 this.fetchQ();
             }
         });
+
+        console.log(this.claims);
+        console.log(this.givenName);
     }
 
     removeFromFav(quote: Quote) {
         this.qService.removeFQ(quote);
         this.fetchQ();
+    }
+
+    getClaims() {
+        return this.claims;
+    }
+
+    get givenName() {
+        const claims: any = this.oauthService.getIdentityClaims();
+        if (!claims) {
+            return null;
+        }
+        return claims.name;
+    }
+
+    get claims() {
+        return this.oauthService.getIdentityClaims();
     }
 }

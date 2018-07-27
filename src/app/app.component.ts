@@ -1,5 +1,5 @@
 import {Component, ViewChild} from '@angular/core';
-import {MenuController, NavController, Platform} from 'ionic-angular';
+import {App, MenuController, NavController, Platform} from 'ionic-angular';
 import {StatusBar} from '@ionic-native/status-bar';
 import {SplashScreen} from '@ionic-native/splash-screen';
 
@@ -19,8 +19,8 @@ export class MyApp {
 
     @ViewChild('nav') nav: NavController;
 
-    constructor(platform: Platform, statusBar: StatusBar, splashScreen: SplashScreen, private menuCtrl: MenuController,
-                oauthService: OAuthService) {
+    constructor(public app: App, platform: Platform, statusBar: StatusBar, splashScreen: SplashScreen, private menuCtrl: MenuController,
+                private oauthService: OAuthService) {
         platform.ready().then(() => {
 
             if (oauthService.hasValidIdToken()) {
@@ -42,6 +42,9 @@ export class MyApp {
 
     }
 
-
+    logout() {
+        this.oauthService.logOut(true);
+        this.app.getRootNavs()[0].setRoot(LoginPage);
+    }
 }
 

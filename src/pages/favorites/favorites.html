@@ -34,4 +34,22 @@
             </ion-item-options>
         </ion-item-sliding>
     </ion-list>
+    
+    <ion-row>
+        <ion-col>
+            <hr>
+            <p>You are logged in as: <b>{{ givenName }}</b></p>
+            <div class="claims">
+                <strong>Claims from Identity Token JWT:</strong>
+                <pre>{{claims | json}}</pre>
+            </div>
+            
+        </ion-col>
+    </ion-row>
+    
+    <ion-row>
+        <button ion-button (click)="getClaims()">
+            Get Claims
+        </button>
+    </ion-row>
 </ion-content>

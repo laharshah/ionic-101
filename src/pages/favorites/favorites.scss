@@ -1,5 +1,16 @@
 page-favorites {
-  .alt-bg {
-    background: cornsilk;
-  }
+    .alt-bg {
+        background: cornsilk;
+    }
+
+    .claims {
+        pre {
+            color: green;
+        }
+    }
+    pre {
+        border: 1px solid silver;
+        background: #eee;
+        padding: 10px;
+    }
 }

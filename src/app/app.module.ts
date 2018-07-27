@@ -16,7 +16,6 @@ import {SettingsService} from "../pages/services/settings";
 import {OAuthModule} from "angular-oauth2-oidc";
 import {LoginPageModule} from "../pages/login/login.module";
 import {HttpClientModule} from "@angular/common/http";
-import {BeerService} from "../pages/services/beer";
 
 @NgModule({
     declarations: [
@@ -50,8 +49,7 @@ import {BeerService} from "../pages/services/beer";
         SplashScreen,
         {provide: ErrorHandler, useClass: IonicErrorHandler},
         QuotesService,
-        SettingsService,
-        BeerService
+        SettingsService
     ]
 })
 export class AppModule {
